@@ -66,6 +66,7 @@
     <body>
         <div class="flex-center position-ref full-height">
             <div id="app">
+                <comment-form></comment-form>
             </div>
         </div>
 
