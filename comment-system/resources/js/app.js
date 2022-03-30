@@ -7,6 +7,7 @@
 require('./bootstrap');
 
 window.Vue = require('vue');
+import store from '@/store'
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,4 +31,5 @@ Vue.component('comment-form', require('./components/CommentForm.vue').default);
 
 const app = new Vue({
     el: '#app',
+    store
 });
