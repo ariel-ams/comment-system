@@ -17,4 +17,9 @@ class CommentController
 
         return response()->json($comment);
     }
+
+    public function all(){
+        $comments = Comment::all();
+        return response()->json([ 'comments' => $comments]);
+    }
 }

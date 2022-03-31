@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::post('/comment/new', 'CommentController@new');
+Route::post('/comment/all', 'CommentController@all');
