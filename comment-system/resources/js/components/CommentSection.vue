@@ -12,12 +12,15 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 
 export default {
     components: {
         Comment: () => import('@/components/Comment'),
         CommentForm: () => import('@/components/CommentForm'),
+    },
+    created(){
+        this.loadComments();
     },
     computed:{
         ...mapGetters('comments',[
@@ -26,6 +29,11 @@ export default {
         atLeastOneCommentExist(){
             return this.getComments.length > 0
         }
+    },
+    methods:{
+        ...mapActions('comments', [
+            'loadComments'
+        ])
     }
 };
 </script>
