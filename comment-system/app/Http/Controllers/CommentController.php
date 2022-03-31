@@ -10,9 +10,17 @@ class CommentController
 {
     public function new(CommentRequest $request)
     {
-        $comment = Comment::make([
+        $parent = Comment::find($request->parent_id);
+
+        if($parent && $parent->nesting_level > 1){
+            return response()->with('error', "Comments can't have more than 3 nesting levels.");
+        }
+
+        $comment = Comment::create([
             'username' => $request->username,
-            'comment_text' => $request->comment_text
+            'comment_text' => $request->comment_text,
+            'nesting_level' => $parent ? $parent->nesting_level + 1 : 0,
+            'parent_id' => $parent ? $parent->id : null
         ]);
 
         return response()->json($comment);
