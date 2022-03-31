@@ -26,6 +26,7 @@ class CommentRequest extends FormRequest
         return [
             'username' => 'required',
             'comment_text' => 'required',
+            'parent_id' => 'nullable|exists:comments,id'
         ];
     }
 }
