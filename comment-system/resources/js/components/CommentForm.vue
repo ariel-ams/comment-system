@@ -43,14 +43,28 @@ export default {
     },    
     methods:{
         ...mapActions('comments', [
-            'addComment'
+            'addSerializedComment'
         ]),
         async saveComment(){
-            let response = await commentService.saveComment(new Comment(this.username, this.comment_text))
+            let response = await commentService.saveComment(this.createNewComponent());
 
-            this.addComment(
-                new Comment(response.data.username, response.data.comment_text)
-            );
+            this.addSerializedComment(response.data);
+
+            this.emitClose();
+        },
+        createRootComment(){
+            return new Comment(this.username, this.comment_text);
+        },
+        createChildComment(){
+            return new Comment(this.username, this.comment_text, this.parent.id);
+        },
+        createNewComponent(){
+            if(this.nested){
+                return this.createChildComment();
+            }
+
+            return this.createRootComment();
+        },
         emitClose(){
             this.comment_text = '';
             this.$emit('close');

@@ -1,5 +1,5 @@
 import commentService from '@/services/commentService';
-import Comment from '@/model/Comment'
+import CommentSerializer from '@/serializers/CommentSerializer'
 
 export const comments = {
     namespaced: true,
@@ -17,15 +17,14 @@ export const comments = {
         }
     },
     actions: {
-        addComment({commit}, comment){
-            commit('addComment', comment)
+        addSerializedComment({commit}, comment){
+            commit('addComment', CommentSerializer.deSerialize(comment))
         },
         async loadComments({commit}){
             let response = await commentService.loadComments();
-            console.log(response);
 
             commit('setComments', response.data.comments.map(
-                c => new Comment(c.username, c.comment_text)
+                c => CommentSerializer.deSerialize(c)
             ));
         }
     },
