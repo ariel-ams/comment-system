@@ -1,12 +1,10 @@
 <template>
     <div>
+        <CommentForm></CommentForm>
         <template v-if="atLeastOneCommentExist">
             <template v-for="(comment, i) in getComments">
                 <Comment :comment="comment" :key="i" ></Comment>
             </template>
-        </template>
-        <template v-else>
-            <CommentForm></CommentForm>
         </template>
     </div>
 </template>
