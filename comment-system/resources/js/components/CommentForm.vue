@@ -13,6 +13,9 @@
       <div>
             <button :disabled="invalidComment" @click="saveComment">Comment</button>
       </div>
+      <div v-if="nested">
+            <button @click="emitClose">Cancel</button>
+      </div>
   </div>
 </template>
 
@@ -22,6 +25,16 @@ import Comment from '@/model/Comment'
 import { mapActions } from 'vuex';
 
 export default {
+    props:{
+        nested:{
+            type: Boolean,
+            default: false
+        },
+        parent:{
+            type: Comment,
+            default: null
+        }
+    },
     data(){
         return {
             username: '',
@@ -38,6 +51,9 @@ export default {
             this.addComment(
                 new Comment(response.data.username, response.data.comment_text)
             );
+        emitClose(){
+            this.comment_text = '';
+            this.$emit('close');
         }
     },
     computed: {
