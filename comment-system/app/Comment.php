@@ -12,4 +12,8 @@ class Comment extends Model
         'nesting_level',
         'parent_id'
     ];
+
+    public function children(){
+        return $this->hasMany('App\Comment', 'parent_id');
+    }
 }

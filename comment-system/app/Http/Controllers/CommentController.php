@@ -27,7 +27,11 @@ class CommentController
     }
 
     public function all(){
-        $comments = Comment::all();
+        $comments = Comment::where('nesting_level', '=', 0)
+            ->withCount('children')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        
         return response()->json([ 'comments' => $comments]);
     }
 }
