@@ -17,4 +17,4 @@ Route::get('/{any?}', function () {
 })->where('any', '.*');
 
 Route::post('/comment/new', 'CommentController@new');
-Route::post('/comment/all', 'CommentController@all');Route::post('/comment/{comment}/children', 'CommentController@children');
+Route::post('/comment/root', 'CommentController@all');
