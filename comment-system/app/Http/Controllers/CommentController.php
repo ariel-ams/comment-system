@@ -23,6 +23,8 @@ class CommentController
             'parent_id' => $parent ? $parent->id : null
         ]);
 
+        $comment->children_count = 0;
+
         return response()->json($comment);
     }
 
@@ -45,6 +47,7 @@ class CommentController
     }
 
     public function withChildren(Comment $comment){
+        $comment->loadCount('children');
         $comments = Comment::where('parent_id', '=', $comment->id)
             ->withCount('children')
             ->orderBy('created_at', 'DESC')
