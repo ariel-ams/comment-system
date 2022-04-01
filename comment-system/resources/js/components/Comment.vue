@@ -30,7 +30,7 @@ export default {
         showReplyForm(){
             this.setCurrentComment(this.comment);
             this.$router.push({
-                path: `comment/${this.comment.id}`
+                path: `/comment/${this.comment.id}`
             })
         },
     }
