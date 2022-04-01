@@ -24,7 +24,12 @@ export const comments = {
         },
         setCurrentComment(state, comment){
             state.comment = comment;
-        }
+        },
+        updateCurrentCommentChildCount(state){
+            let oldComment = state.comment;
+            oldComment.children_count++;
+            state.comment = oldComment;
+        },
     },
     actions: {
         addSerializedComment({commit}, comment){
@@ -55,6 +60,9 @@ export const comments = {
         },
         setCurrentComment({commit}, comment){
             commit('setCurrentComment', comment);
+        },
+        updateCurrentCommentChildCount({commit}){
+            commit('updateCurrentCommentChildCount');
         }
     },
     getters: { 

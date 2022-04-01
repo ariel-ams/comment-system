@@ -43,12 +43,14 @@ export default {
     },    
     methods:{
         ...mapActions('comments', [
-            'addSerializedComment'
+            'addSerializedComment',
+            'updateCurrentCommentChildCount'
         ]),
         async saveComment(){
             let response = await commentService.saveComment(this.createNewComponent());
 
             this.addSerializedComment(response.data);
+            this.updateCurrentCommentChildCount();
 
             this.emitClose();
         },
