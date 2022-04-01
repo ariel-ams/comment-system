@@ -5,10 +5,11 @@
         <p>{{ comment.comment_text }}</p>
         <hr />
         <p v-if="comment.children_count">{{ comment.children_count }}</p>
-        <button @click="showReplyForm" v-if="comment.canHaveChild()" >Reply</button>
+        <!-- <button @reply-button-clicked="showReplyForm" v-if="comment.canHaveChild() && !replayFormVisible" >Reply</button>
         <template v-if="replayFormVisible">
             <CommentForm @close="hideReplyForm" nested :parent="comment"></CommentForm>            
-        </template>
+        </template> -->
+        <OpenCommentButton @reply-button-clicked="showReplyForm" :comment="comment"></OpenCommentButton>
     </div>
 </template>
 
@@ -25,12 +26,13 @@ export default {
     },
     components:{
         CommentForm: () => import('@/components/CommentForm'),
+        OpenCommentButton: () => import('@/components/OpenCommentButton'),
     },
-    data(){
-        return {
-            replayFormVisible: false
-        }
-    },
+    // data(){
+    //     return {
+    //         replayFormVisible: false
+    //     }
+    // },
     methods:{
         ...mapActions('comments', [
             'setCurrentComment'
@@ -40,11 +42,10 @@ export default {
             this.$router.push({
                 path: `comment/${this.comment.id}`
             })
-            // this.replayFormVisible = true;
         },
-        hideReplyForm(){
-            this.replayFormVisible = false;
-        }
+        // hideReplyForm(){
+        //     this.replayFormVisible = false;
+        // }
     }
 };
 </script>

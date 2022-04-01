@@ -5,10 +5,11 @@
         <p>{{ comment.comment_text }}</p>
         <hr />
         <p v-if="comment.children_count">{{ comment.children_count }}</p>
-        <button @click="showReplyForm" v-if="comment.canHaveChild()" >Reply</button>
+        <!-- <button @click="showReplyForm" v-if="comment.canHaveChild()" >Reply</button>
         <template v-if="replayFormVisible">
             <CommentForm @close="hideReplyForm" nested :parent="comment"></CommentForm>            
-        </template>
+        </template> -->
+        <ReplyButton :comment="comment"></ReplyButton>
     </div>
 </template>
 
@@ -25,6 +26,7 @@ export default {
     },
     components:{
         CommentForm: () => import('@/components/CommentForm'),
+        ReplyButton: () => import('@/components/ReplyButton'),
     },
     data(){
         return {
