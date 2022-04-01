@@ -8,6 +8,9 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 import store from '@/store'
+// import * as VueRouter from 'vue-router';
+import Router from "vue-router"
+import routes from '@/routes';
 
 /**
  * The following block of code may be used to automatically register your
@@ -30,7 +33,10 @@ Vue.component('comment-section', require('./components/CommentSection.vue').defa
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+ window.Vue.use(Router)
+
 const app = new Vue({
     el: '#app',
-    store
+    store,
+    router: new Router(routes)
 });

@@ -6,6 +6,7 @@ class CommentSerializer{
         comment.parent_id = data.parent_id;
         comment.nesting_level = data.nesting_level;
         comment.id = data.id;
+        comment.children_count = data.children_count;
 
         return comment;
     }

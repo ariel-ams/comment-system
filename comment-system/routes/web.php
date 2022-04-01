@@ -11,9 +11,10 @@
 |
 */
 
-Route::get('/', function () {
+// Route::get('/', function () {
+Route::get('/{any?}', function () {
     return view('welcome');
-});
+})->where('any', '.*');
 
 Route::post('/comment/new', 'CommentController@new');
 Route::post('/comment/all', 'CommentController@all');

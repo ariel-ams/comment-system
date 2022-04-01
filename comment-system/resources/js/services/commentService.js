@@ -3,6 +3,11 @@ export default {
         return window.axios.post("comment/new", comment)
     },
     async loadComments(){
-        return await window.axios.post("comment/all");
+        return await window.axios.post("comment/root");
+    },
+    async loadChildren(comment_id){
+        return await window.axios.post(`/comment/${comment_id}/children`);
+    }
+    ,
     }
 }
