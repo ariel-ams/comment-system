@@ -8,9 +8,6 @@
 import Comment from "@/model/Comment";
 
 export default {
-    components:{
-        CommentForm: () => import('@/components/CommentForm'),
-    },
     props: {
         comment: {
             type: Comment,

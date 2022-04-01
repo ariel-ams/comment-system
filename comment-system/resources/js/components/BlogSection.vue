@@ -16,7 +16,6 @@ export default {
     components: {
         Blog: () => import('@/components/Blog'),
         Comment: () => import('@/components/Comment'),
-        CommentForm: () => import('@/components/CommentForm'),
     },
     created(){
         this.loadComments();

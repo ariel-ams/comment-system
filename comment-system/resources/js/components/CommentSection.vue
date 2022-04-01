@@ -18,7 +18,6 @@ export default {
     components: {
         Comment: () => import('@/components/Comment'),
         MainComment: () => import('@/components/MainComment'),
-        CommentForm: () => import('@/components/CommentForm'),
     },
     async mounted(){
         if(!this.currentComment){
