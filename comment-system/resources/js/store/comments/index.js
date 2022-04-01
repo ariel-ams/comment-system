@@ -16,7 +16,7 @@ export const comments = {
     mutations: {
         addComment(state, comment){
             let oldComments = state.comments;
-            oldComments.push(comment);
+            oldComments.unshift(comment);
             state.comments = oldComments;
         },
         setComments(state, comments){
