@@ -18,3 +18,4 @@ Route::get('/{any?}', function () {
 
 Route::post('/comment/new', 'CommentController@new');
 Route::post('/comment/root', 'CommentController@all');
+Route::post('/comment/{comment}/children', 'CommentController@children');
