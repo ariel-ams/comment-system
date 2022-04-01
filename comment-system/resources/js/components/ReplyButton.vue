@@ -27,7 +27,7 @@ export default {
     },
     computed:{
         showReplayButton(){
-            return this.comment.canHaveChild() && !this.replayFormVisible;
+            return !this.replayFormVisible;
         }
     },
     methods:{
