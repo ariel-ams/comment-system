@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Blog></Blog>
+        <Blog :comment="getBlog"></Blog>
         <template v-if="atLeastOneCommentExist">
             <template v-for="(comment, i) in getComments">
                 <Comment :comment="comment" :key="i" ></Comment>
@@ -22,7 +22,8 @@ export default {
     },
     computed:{
         ...mapGetters('comments',[
-            'getComments'
+            'getComments',
+            'getBlog'
         ]),
         atLeastOneCommentExist(){
             return this.getComments.length > 0

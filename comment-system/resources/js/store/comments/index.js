@@ -3,7 +3,7 @@ import CommentSerializer from '@/serializers/CommentSerializer';
 import Comment from '@/model/Comment';
 
 const blogComment = () => {
-    return new Comment('original-poster', 'This is my first post.')  
+    return new Comment("original", "poster")  
 }
 
 export const comments = {
@@ -30,6 +30,11 @@ export const comments = {
             oldComment.children_count++;
             state.comment = oldComment;
         },
+        setBlogChildrenCount(state, children_count){
+            let oldComment = state.blog;
+            oldComment.children_count = children_count;
+            state.blog = oldComment;
+        },
     },
     actions: {
         addSerializedComment({commit}, comment){
@@ -41,6 +46,8 @@ export const comments = {
             commit('setComments', response.data.comments.map(
                 c => CommentSerializer.deSerialize(c)
             ));
+
+            commit('setBlogChildrenCount', response.data.comments.length);
         },
         async loadChildren({commit}, comment_id){
             let response = await commentService.loadChildren(comment_id);

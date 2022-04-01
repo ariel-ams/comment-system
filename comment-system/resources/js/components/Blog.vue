@@ -11,13 +11,12 @@
 
 <script>
 import Comment from "@/model/Comment";
-import { mapActions } from 'vuex';
 
 export default {
     props: {
         comment: {
             type: Comment,
-            default: () => new Comment("original", "poster"),
+            default: null,
         },
     },
     components:{
