@@ -9,7 +9,8 @@ const blogComment = () => {
 export const comments = {
     namespaced: true,
     state: {
-        comments: []
+        comments: [],
+        comment: null,
         blog: blogComment()
     },
     mutations: {
@@ -20,6 +21,9 @@ export const comments = {
         },
         setComments(state, comments){
             state.comments = comments;
+        },
+        setCurrentComment(state, comment){
+            state.comment = comment;
         }
     },
     actions: {
@@ -40,11 +44,26 @@ export const comments = {
                 c => CommentSerializer.deSerialize(c)
             ));
         },
+        async loadCommentWithChildren({commit}, comment_id){
+            let response = await commentService.loadCommentWithChildren(comment_id);
+
+            commit('setCurrentComment', CommentSerializer.deSerialize(response.data.mainComment));
+
+            commit('setComments', response.data.comments.map(
+                c => CommentSerializer.deSerialize(c)
+            ));
+        },
+        setCurrentComment({commit}, comment){
+            commit('setCurrentComment', comment);
         }
     },
     getters: { 
         getComments(state){
             return state.comments;
+        },
+        currentComment(state){
+            return state.comment;
+        },
         getBlog(state){
             return state.blog;
         }

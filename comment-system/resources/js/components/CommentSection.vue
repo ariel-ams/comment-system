@@ -1,6 +1,8 @@
 <template>
     <div>
-        <CommentForm></CommentForm>
+        <template v-if="currentComment">
+            <MainComment :comment="currentComment" ></MainComment>
+        </template>
         <template v-if="atLeastOneCommentExist">
             <template v-for="(comment, i) in getComments">
                 <Comment :comment="comment" :key="i" ></Comment>
@@ -15,14 +17,21 @@ import { mapActions, mapGetters } from 'vuex'
 export default {
     components: {
         Comment: () => import('@/components/Comment'),
+        MainComment: () => import('@/components/MainComment'),
         CommentForm: () => import('@/components/CommentForm'),
     },
-    created(){
-        this.loadComments();
+    async mounted(){
+        if(!this.currentComment){
+            await this.loadCommentWithChildren(this.$route.params.id)
+        } else {
+            this.loadChildren(this.currentComment.id);
+        }
+
     },
     computed:{
         ...mapGetters('comments',[
-            'getComments'
+            'getComments',
+            'currentComment'
         ]),
         atLeastOneCommentExist(){
             return this.getComments.length > 0
@@ -30,8 +39,9 @@ export default {
     },
     methods:{
         ...mapActions('comments', [
-            'loadComments'
-        ])
+            'loadChildren',
+            'loadCommentWithChildren'
+        ]),
     }
 };
 </script>

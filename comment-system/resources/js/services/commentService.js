@@ -9,5 +9,7 @@ export default {
         return await window.axios.post(`/comment/${comment_id}/children`);
     }
     ,
+    async loadCommentWithChildren(comment_id){
+        return await window.axios.post(`/comment/${comment_id}/with-children`);
     }
 }

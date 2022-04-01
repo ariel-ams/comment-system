@@ -5,6 +5,10 @@ class Comment{
         this.parent_id = parent_id;
         this.nesting_level = nesting_level;
     }
+
+    canHaveChild(){
+        return this.nesting_level < 2;
+    }
 }
 
 export default Comment;
