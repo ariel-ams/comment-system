@@ -43,4 +43,13 @@ class CommentController
         
         return response()->json([ 'comments' => $comments]);
     }
+
+    public function withChildren(Comment $comment){
+        $comments = Comment::where('parent_id', '=', $comment->id)
+            ->withCount('children')
+            ->orderBy('created_at', 'DESC')
+            ->get();
+        
+        return response()->json([ 'mainComment' => $comment, 'comments' => $comments]);
+    }
 }
