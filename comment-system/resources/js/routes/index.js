@@ -9,5 +9,14 @@ export default {
             component: BlogSection,
             name: 'blog-section'
         },
+        {
+            path: '/comment/:id',
+            component: CommentSection,
+            name: 'comment'
+        },
+        // {
+        //     path: '*',
+        //     redirect: '/'
+        // }
     ]
 }
