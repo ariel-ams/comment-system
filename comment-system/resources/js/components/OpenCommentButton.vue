@@ -25,9 +25,6 @@ export default {
         }
     },
     methods:{
-        // ...mapActions('comments', [
-        //     'setCurrentComment'
-        // ]),
         showReplyForm(){
             this.$emit('reply-button-clicked')
         },

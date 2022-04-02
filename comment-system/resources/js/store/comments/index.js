@@ -24,6 +24,7 @@ export const comments = {
         },
         setCurrentComment(state, comment){
             state.comment = comment;
+            state.comments = []
         },
         updateCurrentCommentChildCount(state){
             let oldComment = state.comment;

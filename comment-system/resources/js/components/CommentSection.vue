@@ -3,11 +3,11 @@
         <template v-if="currentComment">
             <MainComment :comment="currentComment" ></MainComment>
         </template>
-        <template v-if="atLeastOneCommentExist">
+        <div v-if="atLeastOneCommentExist" class="">
             <template v-for="(comment, i) in getComments">
                 <Comment :comment="comment" :key="i" ></Comment>
             </template>
-        </template>
+        </div>
     </div>
 </template>
 
@@ -23,9 +23,8 @@ export default {
         if(!this.currentComment){
             await this.loadCommentWithChildren(this.$route.params.id)
         } else {
-            this.loadChildren(this.currentComment.id);
+            await this.loadChildren(this.currentComment.id);
         }
-
     },
     computed:{
         ...mapGetters('comments',[
