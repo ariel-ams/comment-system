@@ -1,5 +1,5 @@
 <template>
-    <div>
+    <div class="bg-white rounded shadow-sm p-8">
         <span>{{ comment.username }}</span>
         <br />
         <p>{{ comment.comment_text }}</p>

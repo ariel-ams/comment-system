@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="max-w-lg shadow-md">
       <div>
           <label for="username">
               username: <input v-model="username" name="username" class="form-control">

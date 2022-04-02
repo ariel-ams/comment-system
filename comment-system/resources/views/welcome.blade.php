@@ -62,8 +62,9 @@
                 margin-bottom: 30px;
             }
         </style>
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
-    <body>
+    <body class="bg-grey-lightest">
         <div class="flex-center position-ref">
             <div id="app">
                 <router-view />
