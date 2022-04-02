@@ -2,13 +2,13 @@
   <div class="max-w-lg shadow-md">
       <div>
           <label for="username">
-              username: <input v-model="username" name="username" class="form-control">
+              username: <input v-model="storeUsername" name="username" class="form-control">
           </label>
       </div>
       <div>
-          <label for="username">
-              comment: <textarea v-model="comment_text" name="comment_text" class="form-control" />
-          </label>
+        <textarea v-model="comment_text" name="comment_text" 
+            placeholder="Add a comment"
+            class="bg-grey-lighter rounded leading-normal resize-none w-full h-10 py-2 px-3" />
       </div>
       <div>
             <button :disabled="invalidComment" @click="saveComment">Comment</button>
@@ -22,7 +22,7 @@
 <script>
 import commentService from '@/services/commentService';
 import Comment from '@/model/Comment'
-import { mapActions } from 'vuex';
+import { mapActions, mapState } from 'vuex';
 
 export default {
     props:{
@@ -37,14 +37,15 @@ export default {
     },
     data(){
         return {
-            username: '',
+            // username: '',
             comment_text: ''
         }
     },    
     methods:{
         ...mapActions('comments', [
             'addSerializedComment',
-            'updateCurrentCommentChildCount'
+            'updateCurrentCommentChildCount',
+            'updateUsername'
         ]),
         async saveComment(){
             let response = await commentService.saveComment(this.createNewComponent());
@@ -73,6 +74,15 @@ export default {
         }
     },
     computed: {
+        ...mapState('comments', ['username']),
+        storeUsername: {
+            get(){
+                return this.username;
+            },
+            set(value){
+                this.updateUsername(value);
+            }
+        },
         invalidComment(){
             return !this.username || !this.comment_text;
         }

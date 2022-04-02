@@ -9,11 +9,15 @@ const blogComment = () => {
 export const comments = {
     namespaced: true,
     state: {
+        username: "",
         comments: [],
         comment: null,
         blog: blogComment()
     },
     mutations: {
+        setUsername(state, username){
+            state.username = username;
+        },
         addComment(state, comment){
             let oldComments = state.comments;
             oldComments.unshift(comment);
@@ -38,6 +42,9 @@ export const comments = {
         },
     },
     actions: {
+        updateUsername({commit}, username){
+            commit('setUsername', username)
+        },
         addSerializedComment({commit}, comment){
             commit('addComment', CommentSerializer.deSerialize(comment))
         },
