@@ -5,8 +5,9 @@
  */
 
 require('./bootstrap');
-
-window.Vue = require('vue');
+import Vue from 'vue/dist/vue'
+// window.Vue = require('vue');
+window.Vue = Vue;
 import store from '@/store'
 // import * as VueRouter from 'vue-router';
 import Router from "vue-router"
@@ -20,10 +21,9 @@ import routes from '@/routes';
  * Eg. ./components/ExampleComponent.vue -> <example-component></example-component>
  */
 
-// const files = require.context('./', true, /\.vue$/i);
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-// Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+// Vue.component('example-component', require('@/components/ExampleComponent.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -31,7 +31,7 @@ import routes from '@/routes';
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
- window.Vue.use(Router)
+window.Vue.use(Router)
 
 const app = new Vue({
     el: '#app',
