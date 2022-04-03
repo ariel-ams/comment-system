@@ -16,15 +16,13 @@
                 {{ comment.comment_text }}
             </p>
             <div class="d-flex flex-row user-feed justify-content-end">
-                <!-- <div> -->
-                    <span class="wish" @click="showReplyForm"><i class="fa fa-comments mr-2"></i>{{ comment.children_count }}</span>
+                    <span v-if="canHaveResponse()"><i class="fa fa-comments mr-2"></i>{{ comment.children_count }}</span>
                     <div class="ml-3">
                         <OpenCommentButton
                             @reply-button-clicked="showReplyForm"
                             :comment="comment"
                         ></OpenCommentButton>
                     </div>
-                <!-- </div> -->
             </div>
         </div>
     </div>
@@ -52,6 +50,9 @@ export default {
                 path: `/comment/${this.comment.id}`,
             });
         },
+        canHaveResponse(){
+            return this.comment.canHaveChild();
+        }
     },
 };
 </script>
