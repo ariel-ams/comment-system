@@ -13,19 +13,19 @@ const path = require('path');
  */
 
 mix.js('resources/js/app.js', 'public/js').vue()
-    .sass('resources/sass/app.scss', 'public/css') ;
-    // .postCss('resources/sass/app.scss', 'public/css', 
-    // [
-    //     require("tailwindcss"),
-    // ]
-    // );
+    // .sass('resources/sass/app.scss', 'public/css') ;
+    .postCss('resources/sass/app.scss', 'public/css', 
+    [
+        require("tailwindcss"),
+    ]
+    );
 
 mix.webpackConfig({
     resolve: {
         alias: {
             '@': path.resolve('resources/js'),
         },
-        extensions:['.vue','.js']
+        // extensions:['.vue','.js']
     },
     // module: {
     //     loaders: [
