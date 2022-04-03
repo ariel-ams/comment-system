@@ -1,7 +1,7 @@
 <template>
-    <div class="bg-white rounded shadow-sm p-8 mb-4">
-        <button class="border border-blue bg-blue text-white hover:bg-blue-dark py-2 px-4 rounded tracking-wide mr-1"
-         @click="showReplyForm" v-if="showReplayButton" >Reply</button>
+    <div class="w-100">
+        <span @click="showReplyForm"
+         v-if="showReplayButton"><i class="fa fa-comments-o mr-2"></i>Reply</span>
 
         <CommentForm v-if="replayFormVisible" 
             @close="hideReplyForm" nested :parent="comment"></CommentForm>

@@ -58,11 +58,12 @@ export default {
 
 <style>
 .bg-blue {
-    background-color: cornflowerblue;
+    background-color: #212529;
 }
 
 .comment-text {
-    font-size: 13px
+    font-size: 13px;
+    font-weight: large;
 }
 
 .user-feed {

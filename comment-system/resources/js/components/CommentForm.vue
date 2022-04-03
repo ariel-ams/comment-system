@@ -1,21 +1,21 @@
 <template>
-  <div class="max-w-lg shadow-md">
-      <div>
-          <label for="username">
-              username: <input v-model="storeUsername" name="username" class="form-control">
-          </label>
+  <div class="d-flex flex-column">
+      <div class="w-100 mb-1">
+        <input v-model="storeUsername" name="username" 
+        placeholder="Username"
+        class="form-control">
       </div>
-      <div>
+      <div class="w-100">
         <textarea v-model="comment_text" name="comment_text" 
             placeholder="Add a comment"
-            class="bg-grey-lighter rounded leading-normal resize-none w-full h-10 py-2 px-3" />
+            class="form-control" />
       </div>
-      <div class="mt-3">
-            <button  class="border border-blue bg-blue text-white hover:bg-blue-dark py-2 px-4 rounded tracking-wide mr-1"
-            :disabled="invalidComment" @click="saveComment">Comment</button>
-
-            <button v-if="nested" class="border border-grey-darker text-grey-darker hover:bg-grey-dark hover:text-white py-2 px-4 rounded tracking-wide ml-1"
+      <div class="mt-2 ml-auto">
+            <button v-if="nested" class="border border-grey-darker text-grey-darker hover:bg-grey-dark hover:text-white py-1 px-4 rounded tracking-wide ml-1"
             @click="emitClose">Cancel</button>
+
+            <button  class="border border-blue bg-blue text-white hover:bg-blue-dark py-1 px-4 rounded tracking-wide mr-1"
+            :disabled="invalidComment" @click="saveComment">Comment</button>
       </div>
   </div>
 </template>

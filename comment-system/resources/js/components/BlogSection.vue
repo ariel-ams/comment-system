@@ -1,6 +1,6 @@
 <template>
     <div>
-        <Blog :comment="getBlog"></Blog>
+        <Blog class="sticky-top" :comment="getBlog"></Blog>
         <template v-if="atLeastOneCommentExist">
             <template v-for="(comment, i) in getComments">
                 <Comment :comment="comment" :key="i" ></Comment>
