@@ -1,7 +1,6 @@
 <template>
-    <div>
-        <button @click="showReplyForm" v-if="showReplayButton" >Reply</button>
-    </div>
+    <button class="border border-blue bg-blue text-white hover:bg-blue-dark py-2 px-4 rounded tracking-wide mr-1"
+    @click="showReplyForm" v-if="showReplayButton" >Reply</button>
 </template>
 
 <script>

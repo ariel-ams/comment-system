@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import Comment from "@/model/Comment";
+import Comment from '@/model/Comment';
 
 export default {
     props: {

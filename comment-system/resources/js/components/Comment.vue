@@ -1,11 +1,15 @@
 <template>
-    <div class="bg-white rounded shadow-sm p-8">
+    <div class="bg-white rounded shadow-sm p-8 mb-4">
         <span>{{ comment.username }}</span>
         <br />
-        <p>{{ comment.comment_text }}</p>
+        <div class="flex justify-between mb-1">
+            <p class="text-grey-darkest leading-normal text-lg">{{ comment.comment_text }}</p>
+        </div>
         <hr />
         <p v-if="comment.children_count">{{ comment.children_count }}</p>
-        <OpenCommentButton @reply-button-clicked="showReplyForm" :comment="comment"></OpenCommentButton>
+        <div  class="mt-3">
+            <OpenCommentButton @reply-button-clicked="showReplyForm" :comment="comment"></OpenCommentButton>
+        </div>
     </div>
 </template>
 
@@ -37,4 +41,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.bg-blue {
+    background-color: cornflowerblue;
+}
+</style>

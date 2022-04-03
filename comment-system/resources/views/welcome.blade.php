@@ -10,7 +10,7 @@
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
         <!-- Styles -->
-        <style>
+        {{-- <style>
             html, body {
                 background-color: #fff;
                 color: #636b6f;
@@ -61,14 +61,12 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-        </style>
+        </style> --}}
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     </head>
     <body class="bg-grey-lightest">
-        <div class="flex-center position-ref">
-            <div id="app">
-                <router-view />
-            </div>
+        <div id="app" class="flex">
+            <router-view />
         </div>
 
         <script src="{{ mix('js/app.js') }}"></script>

@@ -10,11 +10,12 @@
             placeholder="Add a comment"
             class="bg-grey-lighter rounded leading-normal resize-none w-full h-10 py-2 px-3" />
       </div>
-      <div>
-            <button :disabled="invalidComment" @click="saveComment">Comment</button>
-      </div>
-      <div v-if="nested">
-            <button @click="emitClose">Cancel</button>
+      <div class="mt-3">
+            <button  class="border border-blue bg-blue text-white hover:bg-blue-dark py-2 px-4 rounded tracking-wide mr-1"
+            :disabled="invalidComment" @click="saveComment">Comment</button>
+
+            <button v-if="nested" class="border border-grey-darker text-grey-darker hover:bg-grey-dark hover:text-white py-2 px-4 rounded tracking-wide ml-1"
+            @click="emitClose">Cancel</button>
       </div>
   </div>
 </template>
