@@ -14,7 +14,8 @@ const path = require('path');
 
 mix.js('resources/js/app.js', 'public/js').vue()
     // .sass('resources/sass/app.scss', 'public/css') ;
-    .postCss('resources/sass/app.scss', 'public/css', 
+    // .postCss('resources/sass/app.scss', 'public/css', 
+    .sass('resources/sass/app.scss', 'public/css', 
     [
         require("tailwindcss"),
     ]
@@ -32,4 +33,8 @@ mix.webpackConfig({
     //         { test: /\.css$/, loader: "style-loader!css-loader" }
     //     ]
     // }
+});
+
+mix.browserSync({
+    proxy: '127.0.0.1:8000'
 });
