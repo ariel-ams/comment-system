@@ -1,7 +1,7 @@
 <template>
     <div class="d-flex flex-row p-3 main-post">
         <div class="w-100">
-            <p class="text-justify h3 mb-2">
+            <p class="h4 mb-2">
                 {{ currentComment.comment_text }}
             </p>
             <div class="d-flex justify-content-between align-items-center">

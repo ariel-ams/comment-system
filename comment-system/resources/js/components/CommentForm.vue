@@ -14,7 +14,7 @@
             <button v-if="nested" class="border border-grey-darker text-grey-darker hover:bg-grey-dark hover:text-white py-1 px-4 rounded tracking-wide ml-1"
             @click="emitClose">Cancel</button>
 
-            <button  class="border border-blue bg-blue text-white hover:bg-blue-dark py-1 px-4 rounded tracking-wide mr-1"
+            <button  class="border bg-dark bg-blue text-white py-1 px-4 rounded tracking-wide mr-1"
             :disabled="invalidComment" @click="saveComment">Comment</button>
       </div>
   </div>

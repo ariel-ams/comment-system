@@ -3,7 +3,7 @@ import CommentSerializer from '@/serializers/CommentSerializer';
 import Comment from '@/model/Comment';
 
 const blogComment = () => {
-    return new Comment("original", "poster")  
+    return new Comment("poster-name", "Hello! This is my first post. Leave an answer if you want :)")  
 }
 
 export const comments = {
@@ -31,7 +31,12 @@ export const comments = {
             state.comments = []
         },
         updateCurrentCommentChildCount(state){
-            let oldComment = state.comment;
+            let oldComment;
+            if(state.comment){
+                oldComment = state.comment;
+            } else {
+                oldComment = state.blog;
+            }
             oldComment.children_count++;
             state.comment = oldComment;
         },

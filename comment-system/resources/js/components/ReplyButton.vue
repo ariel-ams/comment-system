@@ -1,7 +1,7 @@
 <template>
     <div class="w-100">
         <span @click="showReplyForm"
-         v-if="showReplayButton"><i class="fa fa-comments-o mr-2"></i>Reply</span>
+         v-if="showReplayButton">Reply</span>
 
         <CommentForm v-if="replayFormVisible" 
             @close="hideReplyForm" nested :parent="comment"></CommentForm>

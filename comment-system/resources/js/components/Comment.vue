@@ -12,7 +12,7 @@
                     <span class="mr-2">{{ comment.username }}</span>
                 </div>
             </div>
-            <p class="text-justify comment-text mb-0">
+            <p class="comment-text mb-0">
                 {{ comment.comment_text }}
             </p>
             <div class="d-flex flex-row user-feed justify-content-end">
